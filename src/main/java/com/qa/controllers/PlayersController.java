@@ -19,7 +19,7 @@ private PlayersRepository repository;
         public List<Players> listAllPlayers() { return repository.findAll(); }
 
         @RequestMapping(value = "players", method = RequestMethod.POST)
-        public Players addPlayer(@RequestBody Players players) { return repository.saveAndFlush(players); }
+        public Players addPlayer(@RequestBody Players p) { return repository.saveAndFlush(p); }
 
         @RequestMapping(value = "players/{id}", method = RequestMethod.GET)
         public Players getPlayer(@PathVariable Long id) { return repository.findOne(id); }
