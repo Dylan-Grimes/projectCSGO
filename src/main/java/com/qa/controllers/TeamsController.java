@@ -24,4 +24,8 @@ public class TeamsController {
     public Teams addTeam(@RequestBody Teams team) {
         return repository.saveAndFlush(team);
     }
+
+    @RequestMapping(value = "teams/{id}", method = RequestMethod.GET)
+    public Teams getTeam(@PathVariable Long id) { return repository.findOne(id); }
+
 }
