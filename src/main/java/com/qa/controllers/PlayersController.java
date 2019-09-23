@@ -20,7 +20,10 @@ private PlayersRepository repository;
         @RequestMapping(value = "players", method = RequestMethod.POST)
         public Players addPlayer(@RequestBody Players players) { return repository.saveAndFlush(players); }
 
-
+        @RequestMapping(value = "players/{id}", method = RequestMethod.GET)
+        public Players getPlayer(@PathVariable Long id) {
+        return repository.findOne(id);
+    }
 
 
 
