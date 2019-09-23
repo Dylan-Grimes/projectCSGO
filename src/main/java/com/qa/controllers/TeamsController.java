@@ -19,4 +19,9 @@ public class TeamsController {
     public List<Teams> listAllTeams() {
         return repository.findAll();
     }
+
+    @RequestMapping(value = "teams", method = RequestMethod.POST)
+    public Teams addTeam(@RequestBody Teams team) {
+        return repository.saveAndFlush(team);
+    }
 }
