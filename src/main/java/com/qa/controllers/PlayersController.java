@@ -21,10 +21,13 @@ private PlayersRepository repository;
         public Players addPlayer(@RequestBody Players players) { return repository.saveAndFlush(players); }
 
         @RequestMapping(value = "players/{id}", method = RequestMethod.GET)
-        public Players getPlayer(@PathVariable Long id) {
-        return repository.findOne(id);
-    }
+        public Players getPlayer(@PathVariable Long id) { return repository.findOne(id); }
 
-
+        @RequestMapping(value = "players/{id}", method = RequestMethod.DELETE)
+        public Players deletePlayer(@PathVariable Long id) {
+                Players existing = repository.findOne(id);
+                repository.delete(existing);
+                return existing;
+        }
 
 }
