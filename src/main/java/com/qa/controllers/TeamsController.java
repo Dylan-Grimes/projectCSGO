@@ -28,4 +28,11 @@ public class TeamsController {
     @RequestMapping(value = "teams/{id}", method = RequestMethod.GET)
     public Teams getTeam(@PathVariable Long id) { return repository.findOne(id); }
 
+    @RequestMapping(value = "teams/{id}", method = RequestMethod.DELETE)
+    public Teams deleteTeam(@PathVariable Long id) {
+        Teams existing = repository.findOne(id);
+        repository.delete(existing);
+        return existing;
+    }
+
 }
