@@ -19,4 +19,9 @@ public class PlayersController {
         return repository.findAll();
     }
 
+    @RequestMapping(value = "players", method = RequestMethod.POST)
+    public Players addPlayer(@RequestBody Players players) {
+        return repository.saveAndFlush(players);
+    }
+
 }
