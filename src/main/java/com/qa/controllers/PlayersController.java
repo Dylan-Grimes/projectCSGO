@@ -3,6 +3,7 @@ package com.qa.controllers;
 import com.qa.models.Players;
 import com.qa.repository.PlayersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,6 +29,16 @@ private PlayersRepository repository;
                 Players existing = repository.findOne(id);
                 repository.delete(existing);
                 return existing;
+        }
+
+        @Transactional
+        @RequestMapping(value = "players/{id}", method = RequestMethod.PUT)
+        public Players updatePlayers(@PathVariable Long id, @RequestBody Players player){
+                Players existing = repository.findOne(id);
+
+                existing.updateAll(player);
+
+                return repository.saveAndFlush(existing);
         }
 
 }
