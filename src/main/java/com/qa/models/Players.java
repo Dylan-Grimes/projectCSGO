@@ -47,5 +47,11 @@ public class Players {
         this.playerRole = playerRole;
     }
 
+
+    public void updateAll(Players player){
+        this.playerName = player.getPlayerName();
+        this.playerRank = player.getPlayerRank();
+        this.playerRole = player.getPlayerRole();
+    }
 }
 
